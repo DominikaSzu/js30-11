@@ -12,3 +12,4 @@ function playItSam() {
 }
 
 playerBtn.addEventListener('click', playItSam);
+videoPlayer.addEventListener('click', playItSam);
