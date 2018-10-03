@@ -4,6 +4,7 @@ const videoPlayer = document.querySelector('.player__video');
 const skipButtons = document.querySelectorAll('[data-skip]');
 const playbackRate = document.getElementsByName('playbackRate').item(0);
 const volumeRate = document.getElementsByName('volume').item(0);
+const rangeInputs = document.querySelectorAll('.player__slider');
 
 // Playing the video
 
@@ -30,18 +31,15 @@ function skipVideo() {
     videoPlayer.currentTime += parseFloat(timeToSkip);
 }
 
-// Changing the playback rate of video
+// Changing volume and playback of the video
 
-function changePlaybackRate () {
-    let speed = this.value;
-    videoPlayer.playbackRate = speed;
-}
-
-// Changing the volume of the video
-
-function changeVolume () {
-    let volume = this.value;
-    videoPlayer.volume = volume;
+function changeTheSetting () {
+    let rangeValue = this.value;
+    if (this.name == 'volume') {
+        videoPlayer.volume = rangeValue;
+    } else if (this.name == 'playbackRate') {
+        videoPlayer.playbackRate = rangeValue;
+    }
 }
 
 // Event listeners
@@ -51,5 +49,4 @@ videoPlayer.addEventListener('click', playItSam);
 videoPlayer.addEventListener('play', updateBtn);
 videoPlayer.addEventListener('pause', updateBtn);
 skipButtons.forEach(skipBtn => skipBtn.addEventListener('click', skipVideo));
-playbackRate.addEventListener('input', changePlaybackRate);
-volumeRate.addEventListener('input', changeVolume);
+rangeInputs.forEach(input => input.addEventListener('input', changeTheSetting));
