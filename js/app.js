@@ -5,6 +5,7 @@ const skipButtons = document.querySelectorAll('[data-skip]');
 const playbackRate = document.getElementsByName('playbackRate').item(0);
 const volumeRate = document.getElementsByName('volume').item(0);
 const rangeInputs = document.querySelectorAll('.player__slider');
+const progressBar = document.querySelector('.progress__filled');
 
 // Playing the video
 
@@ -37,6 +38,14 @@ function changeTheSetting () {
     videoPlayer[this.name] = this.value;
 }
 
+// Adjust the length of progress bar to movie progress
+
+function handleProgressBar() {
+    const percent = ((videoPlayer.currentTime * 100) / videoPlayer.duration);
+    progressBar.style.flexBasis = `${percent}%`
+}
+
+
 // Event listeners
 
 playerBtn.addEventListener('click', playItSam);
@@ -45,3 +54,4 @@ videoPlayer.addEventListener('play', updateBtn);
 videoPlayer.addEventListener('pause', updateBtn);
 skipButtons.forEach(skipBtn => skipBtn.addEventListener('click', skipVideo));
 rangeInputs.forEach(input => input.addEventListener('input', changeTheSetting));
+videoPlayer.addEventListener('timeupdate', handleProgressBar);
