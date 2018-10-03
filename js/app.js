@@ -34,12 +34,7 @@ function skipVideo() {
 // Changing volume and playback of the video
 
 function changeTheSetting () {
-    let rangeValue = this.value;
-    if (this.name == 'volume') {
-        videoPlayer.volume = rangeValue;
-    } else if (this.name == 'playbackRate') {
-        videoPlayer.playbackRate = rangeValue;
-    }
+    videoPlayer[this.name] = this.value;
 }
 
 // Event listeners
