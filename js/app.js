@@ -6,6 +6,7 @@ const playbackRate = document.getElementsByName('playbackRate').item(0);
 const volumeRate = document.getElementsByName('volume').item(0);
 const rangeInputs = document.querySelectorAll('.player__slider');
 const progressBar = document.querySelector('.progress__filled');
+const progressDiv = document.querySelector('.progress');
 
 // Playing the video
 
@@ -45,6 +46,14 @@ function handleProgressBar() {
     progressBar.style.flexBasis = `${percent}%`
 }
 
+// Handle progess bar manually
+
+function handleBarManually(e) {
+    let newBarWidth = ((e.offsetX * 100) / progressDiv.offsetWidth);
+    progressBar.style.flexBasis = `${newBarWidth}%`;
+    let currentTimeMovie = ((newBarWidth * videoPlayer.duration) / 100);
+    videoPlayer.currentTime = currentTimeMovie;
+}
 
 // Event listeners
 
@@ -55,3 +64,4 @@ videoPlayer.addEventListener('pause', updateBtn);
 skipButtons.forEach(skipBtn => skipBtn.addEventListener('click', skipVideo));
 rangeInputs.forEach(input => input.addEventListener('input', changeTheSetting));
 videoPlayer.addEventListener('timeupdate', handleProgressBar);
+progressDiv.addEventListener('click', handleBarManually);
