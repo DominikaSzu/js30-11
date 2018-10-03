@@ -7,6 +7,7 @@ const volumeRate = document.getElementsByName('volume').item(0);
 const rangeInputs = document.querySelectorAll('.player__slider');
 const progressBar = document.querySelector('.progress__filled');
 const progressDiv = document.querySelector('.progress');
+const fullscreenBtn = document.querySelector('.button__fullscreen');
 let mousedown = false;
 
 // Playing the video
@@ -56,6 +57,14 @@ function handleBarManually(e) {
     videoPlayer.currentTime = currentTimeMovie;
 }
 
+// Fullscreen function
+
+function gonnabeHuge() {
+//    videoPlayer.requestFullscreen();
+    videoPlayer.webkitRequestFullscreen();
+}
+
+
 // Event listeners
 
 playerBtn.addEventListener('click', playItSam);
@@ -73,3 +82,4 @@ progressDiv.addEventListener('mousemove', (e) => {
         handleBarManually(e);
     }
 });
+fullscreenBtn.addEventListener('click', gonnabeHuge);
