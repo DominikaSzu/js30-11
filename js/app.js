@@ -7,6 +7,7 @@ const volumeRate = document.getElementsByName('volume').item(0);
 const rangeInputs = document.querySelectorAll('.player__slider');
 const progressBar = document.querySelector('.progress__filled');
 const progressDiv = document.querySelector('.progress');
+let mousedown = false;
 
 // Playing the video
 
@@ -65,3 +66,10 @@ skipButtons.forEach(skipBtn => skipBtn.addEventListener('click', skipVideo));
 rangeInputs.forEach(input => input.addEventListener('input', changeTheSetting));
 videoPlayer.addEventListener('timeupdate', handleProgressBar);
 progressDiv.addEventListener('click', handleBarManually);
+progressDiv.addEventListener('mousedown', () => mousedown = true);
+progressDiv.addEventListener('mouseup', () => mousedown = false);
+progressDiv.addEventListener('mousemove', (e) => {
+    if (mousedown) {
+        handleBarManually(e);
+    }
+});
