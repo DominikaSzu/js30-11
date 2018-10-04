@@ -1,6 +1,6 @@
 # js30-11
 
-This is the ninth of the Wes Bos Javascript30 Challenge. It is a customized video player with functionalities implemented in Javascript.
+This is the eleventh of the Wes Bos Javascript30 Challenge. It is a customized video player with functionalities implemented in Javascript.
 
 ## Code dependencies
 
