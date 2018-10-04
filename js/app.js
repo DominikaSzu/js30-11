@@ -60,8 +60,11 @@ function handleBarManually(e) {
 // Fullscreen function
 
 function gonnabeHuge() {
-//    videoPlayer.requestFullscreen();
+//    prepare it for different user agents
     videoPlayer.webkitRequestFullscreen();
+    videoPlayer.mozRequestFullScreen();
+    videoPlayer.msRequestFullscreen();
+    videoPlayer.requestFullscreen();
 }
 
 
